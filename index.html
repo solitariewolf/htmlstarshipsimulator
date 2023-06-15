@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reprodução de Vídeo</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #000;
+    }
+
+    .video-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      max-height: 100vh;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <div class="video-container">
+    <video src="welcome.mp4" autoplay loop muted></video>
+  </div>
+
+  <script>
+    const video = document.querySelector('video');
+
+    // Define a duração em milissegundos do vídeo
+    const videoDuration = 9000; // 9 segundos
+
+    // Redireciona para o diretório "/simulator" após o término do vídeo
+    setTimeout(() => {
+      window.location.href = './simulator/index.html';
+    }, videoDuration);
+  </script>
+</body>
+</html>
