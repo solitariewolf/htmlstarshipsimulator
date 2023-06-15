@@ -55,7 +55,14 @@ document.addEventListener('DOMContentLoaded', function() {
         pitchDegrees = event.target.value - 180;
         pitchDisplay.textContent = event.target.value;
         updateTransform();
-        updateArtificialHorizon();
+        updatePointerPosition(pitchDegrees);
+    }
+    
+    function updatePointerPosition(pitchDegrees) {
+        const pointer = document.getElementById('pointer');
+        const maxMovement = 40;
+        const movement = (pitchDegrees / 180) * maxMovement;
+        pointer.style.left = `calc(50% + ${movement}px)`;
     }
 
     function updateTransform() {

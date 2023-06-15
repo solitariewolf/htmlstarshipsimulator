@@ -151,6 +151,16 @@ html, body {
   width: 300px;
   height: 150px;
 }
+.pointer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 20px;
+  background-color: red;
+  transform: translateX(-50%);
+  transition: transform 3s;
+}
 /* computador de bordo */
 .mini-computer {
   display: flex;
