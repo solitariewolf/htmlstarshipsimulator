@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador de Espaçonave</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="top-section">
+          <div class="left-controls">
+            <div class="control-panel">
+              <h2>Display Multifuncional</h2>
+              <div class="display">
+                <p>Rotação: <span id="rotation-display">180</span>°</p>
+            </div>
+            <div class="display">
+                <p>Guinada: <span id="yaw-display">180</span>°</p>
+            </div>
+            <div class="display">
+                <p>Inclinação: <span id="pitch-display">180</span>°</p>
+            </div>
+            </div>
+            <div class="control-panel">
+              <h2>Teclado e Controles de Computador de Voo</h2>
+            </div>
+          </div>
+          
+          <div class="spaceship-frame" id="spaceship-frame">
+            <img src="img/starship.svg" alt="Espaçonave" />
+          </div>
+          
+          <div class="right-controls">
+            <div class="control-panel">
+              <h2>Sistema de Navegação Inercial</h2>
+            </div>
+            <div class="control-panel">
+              <h2>Sistemas de Emergência e Aborto</h2>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bottom-controls">
+          <div class="control-panel">
+            <h2>Painel de Controle de Voo Principal</h2>
+          </div>
+          <div class="control-panel">
+            <h2>Controles de Manobra</h2>
+            <p>Rotação da Espaçonave:</p>
+            <input type="range" min="0" max="360" value="180" class="joystick" id="joystick">
+            <p>Controles de Guinada</p>
+            <input type="range" id="yaw-control" min="0" max="360" value="180" class="yaw-slider" />
+            <p>Controles de Inclinação</p>
+            <input type="range" id="pitch-control" min="0" max="360" value="180" class="pitch-slider" />
+          </div>
+        </div>
+      </div>
+  <script>
+    function createStars(numStars) {
+      const frame = document.getElementById('spaceship-frame');
+      
+      for (let i = 0; i < numStars; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.animationDelay = `${Math.random() * 2}s`;
+        frame.appendChild(star);
+
+        setTimeout(() => {
+          star.classList.add('animated');
+        }, Math.random() * 2000);
+      }
+    }
+
+    createStars(50);
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
