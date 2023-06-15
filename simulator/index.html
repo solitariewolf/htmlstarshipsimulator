@@ -7,28 +7,30 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="spaceship-frame" id="spaceship-frame">
+    <img src="img/starship.svg" alt="Espaçonave" />
+  </div>
     <div class="container">
         <div class="top-section">
           <div class="left-controls">
             <div class="control-panel">
               <h2>Display Multifuncional</h2>
+
               <div class="display">
-                <p>Rotação: <span id="rotation-display">180</span>°</p>
-            </div>
-            <div class="display">
-                <p>Guinada: <span id="yaw-display">180</span>°</p>
-            </div>
-            <div class="display">
-                <p>Inclinação: <span id="pitch-display">180</span>°</p>
-            </div>
-            </div>
-            <div class="control-panel">
-              <h2>Teclado e Controles de Computador de Voo</h2>
-            </div>
-          </div>
-          
-          <div class="spaceship-frame" id="spaceship-frame">
-            <img src="img/starship.svg" alt="Espaçonave" />
+                  <p>Rotação: <span id="rotation-display">180</span>°</p>
+              </div>
+              <div class="display">
+                  <p>Guinada: <span id="yaw-display">180</span>°</p>
+              </div>
+              <div class="display">
+                  <p>Inclinação: <span id="pitch-display">180</span>°</p>
+              </div>
+              <div class="artificial-horizon-container">
+                  <div class="artificial-horizon" id="artificial-horizon">
+                      <div class="sky"></div>
+                      <div class="ground"></div>
+                  </div>
+              </div>
           </div>
           
           <div class="right-controls">
@@ -47,13 +49,35 @@
           </div>
           <div class="control-panel">
             <h2>Controles de Manobra</h2>
+            
             <p>Rotação da Espaçonave:</p>
-            <input type="range" min="0" max="360" value="180" class="joystick" id="joystick">
-            <p>Controles de Guinada</p>
-            <input type="range" id="yaw-control" min="0" max="360" value="180" class="yaw-slider" />
-            <p>Controles de Inclinação</p>
-            <input type="range" id="pitch-control" min="0" max="360" value="180" class="pitch-slider" />
-          </div>
+            <div class="control-group">
+                <button class="decrement-button" data-control="joystick">←</button>
+                <input type="range" min="0" max="360" value="180" class="joystick" id="joystick">
+                <button class="increment-button" data-control="joystick">→</button>
+                <button class="lock-button" data-control="joystick">L</button>
+                <span class="light green" id="joystick-light"></span>
+            </div>
+            
+            <p>Controles de Guinada:</p>
+            <div class="control-group">
+                <button class="decrement-button" data-control="yaw-control">←</button>
+                <input type="range" id="yaw-control" min="0" max="360" value="180" class="yaw-slider" />
+                <button class="increment-button" data-control="yaw-control">→</button>
+                <button class="lock-button" data-control="yaw-control">L</button>
+                <span class="light green" id="yaw-control-light"></span>
+            </div>
+            
+            <p>Controles de Inclinação:</p>
+            <div class="control-group">
+                <button class="decrement-button" data-control="pitch-control">←</button>
+                <input type="range" id="pitch-control" min="0" max="360" value="180" class="pitch-slider" />
+                <button class="increment-button" data-control="pitch-control">→</button>
+                <button class="lock-button" data-control="pitch-control">L</button>
+                <span class="light green" id="pitch-control-light"></span>
+            </div>
+            
+        </div>
         </div>
       </div>
   <script>
