@@ -3,7 +3,7 @@ html, body {
     background-color: #010d77;
    }
    .container {
-    padding-right: 220px; /* Deixe espaço suficiente para o frame da espaçonave */
+    padding-right: 220px; 
     height: 100vh;
 }
   
@@ -15,11 +15,11 @@ html, body {
   }
   
   .spaceship-frame {
-    position: absolute; /* Altere position para absolute */
-    top: 20px; /* Defina uma margem superior */
-    right: 10px; /* Defina a distância da margem direita */
-    width: 400px; /* Ajuste o tamanho como desejar */
-    height: 320px; /* Ajuste o tamanho como desejar */
+    position: absolute; 
+    top: 20px; 
+    right: 10px; 
+    width: 400px; 
+    height: 320px; 
     background-color: #000;
     overflow: hidden;
 }
@@ -137,6 +137,7 @@ html, body {
   height: 300px;
   top: -75px;
   left: -75px;
+  transition: transform 3s;
 }
 
 .sky {
@@ -149,4 +150,52 @@ html, body {
   background-color: #8B4513;
   width: 300px;
   height: 150px;
+}
+/* computador de bordo */
+.mini-computer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mini-computer-screen {
+  width: 200px;
+  height: 80px;
+  background-color: #000000;
+  color: #0f0;
+  border: 1px solid #444;
+  padding: 5px;
+  margin-bottom: 10px;
+  border-width: 5px;
+  border-color: #010d77;
+  white-space: pre-wrap;
+}
+
+.keyboard,
+.numeric-keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.keyboard-row {
+  display: flex;
+}
+
+button {
+  width: 20px;
+  height: 20px;
+  margin: 1px;
+  font-size: 10px;
+  text-align: center;
+}
+
+.space {
+  width: 160px;
+}
+.enter {
+  width: 60px;
+}
+.backspace {
+  width: 40px;
 }
