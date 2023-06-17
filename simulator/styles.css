@@ -96,7 +96,7 @@ html, body {
 
 .emergency-systems-panel {
   position: absolute;
-  top: 800px;
+  top: 552px;
   left: calc(10px + 50px + 400px)
 }
 
@@ -137,7 +137,7 @@ html, body {
     font-size: 16px;
     padding: 3px;
     width: 160px;
-    height: 20px;
+    height: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -343,7 +343,7 @@ button {
   padding: 0 5px;
 }
 .lock-button.locked {
-  background-color: red;
+  background-color: rgb(60, 255, 0);
   color: white;
 }
 .engine-controls {
@@ -364,11 +364,68 @@ button {
 }
 
 .throttle-control {
-  writing-mode: bt-lr; /* old syntax for IE and Edge */
+  writing-mode: bt-lr;
   height: 150px;
   margin: 10px;
 }
 
 .lock-button {
   margin-left: 10px;
+}
+/* sistemas de emergência */
+.emergency-systems-panel {
+  padding: 10px;
+}
+
+.emergency-system {
+  margin: 10px;
+}
+
+.toggle-switch {
+  width: 40px;
+  height: 20px;
+  border: 1px solid #333;
+  background-color: #555;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 5px;
+  position: relative;
+}
+
+.toggle-switch::before {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background-color: #222;
+  top: 1px;
+  left: 1px;
+  transition: 0.3s ease;
+}
+
+.toggle-switch.active::before {
+  left: 20px;
+}
+
+.indicator-light {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #900;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.indicator-light.active {
+  background-color: #0c0;
+}
+.emergency-row {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+}
+
+.emergency-system h3 {
+  font-size: 14px;
+  margin: 5px 0;
 }

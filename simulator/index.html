@@ -75,9 +75,51 @@
             </div>
             <div class="control-panel emergency-systems-panel">
               <h2>Sistemas de Emergência e Aborto</h2>
-            </div>
+              <div class="emergency-row">
+                  <div class="emergency-system" id="les">
+                      <h3>LES</h3>
+                      <div class="switches">
+                          <button class="toggle-switch" id="les-switch-1"></button>
+                          <button class="toggle-switch" id="les-switch-2"></button>
+                      </div>
+                      <div class="indicator-light" id="les-indicator"></div>
+                  </div>
+                  <div class="emergency-system" id="rsls">
+                      <h3>RSLS</h3>
+                      <div class="switches">
+                          <button class="toggle-switch" id="rsls-switch-1"></button>
+                          <button class="toggle-switch" id="rsls-switch-2"></button>
+                      </div>
+                      <div class="indicator-light" id="rsls-indicator"></div>
+                  </div>
+                  <div class="emergency-system" id="tal">
+                      <h3>TAL</h3>
+                      <div class="switches">
+                          <button class="toggle-switch" id="tal-switch-1"></button>
+                          <button class="toggle-switch" id="tal-switch-2"></button>
+                      </div>
+                      <div class="indicator-light" id="tal-indicator"></div>
+                  </div>
+              </div>
+              <div class="emergency-row">
+                  <div class="emergency-system" id="rtls">
+                      <h3>RTLS</h3>
+                      <div class="switches">
+                          <button class="toggle-switch" id="rtls-switch-1"></button>
+                          <button class="toggle-switch" id="rtls-switch-2"></button>
+                      </div>
+                      <div class="indicator-light" id="rtls-indicator"></div>
+                  </div>
+                  <div class="emergency-system" id="alps">
+                      <h3>ALPS</h3>
+                      <div class="switches">
+                          <button class="toggle-switch" id="alps-switch-1"></button>
+                          <button class="toggle-switch" id="alps-switch-2"></button>
+                      </div>
+                      <div class="indicator-light" id="alps-indicator"></div>
+                  </div>
+              </div>
           </div>
-        </div>
         
         <div class="bottom-controls">
           <div class="control-panel flight-control-panel" id="flight-control-panel">
@@ -185,5 +227,6 @@
   <script src="computer.js"></script>
   <script src="ine.js"></script>
   <script src="controls.js"></script>
+  <script src="emergency.js"></script>
 </body>
 </html>
