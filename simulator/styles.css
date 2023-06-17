@@ -72,7 +72,7 @@ html, body {
   .control-panel {
     width: 400px;
     padding: 20px;
-    background-color: #ccc;
+    background-color: #474444;
     border: 1px solid #615959;
     margin-bottom: 20px;
   }
@@ -208,4 +208,90 @@ button {
 }
 .backspace {
   width: 40px;
+}
+/* estilos para o painel de interruptores */
+.switch-panel {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.switch-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px;
+}
+
+.switch {
+  display: block;
+  width: 20px;
+  height: 40px;
+  background-color: #333;
+  cursor: pointer;
+  position: relative;
+}
+
+.switch input {
+  display: none;
+}
+
+.switch::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  width: 10px;
+  height: 20px;
+  background-color: red;
+  transition: 0.3s;
+}
+
+.switch input:checked + .switch::before {
+  top: 20px;
+  background-color: green;
+}
+
+.switch-label {
+  margin-top: 5px;
+  text-align: center;
+  font-size: 10px;
+}
+
+/* Estilos para o Sistema de Navegação Inercial */
+#inertial-navigation-system {
+  color: #f2f2f2;
+}
+
+.position,
+.orientation {
+  margin-bottom: 10px;
+}
+.ins-control-panel {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.ins-switch {
+  margin-bottom: 10px;
+}
+
+.status-indicator {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  margin-right: 5px;
+}
+.position-panel,
+.orientation-panel {
+    background-color: black;
+    color: #0f0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    padding: 10px;
+    width: 370px;
+    margin: 5px;
+    border: solid 1px #0f0;
 }

@@ -35,8 +35,43 @@
           </div>
           
           <div class="right-controls">
-            <div class="control-panel">
+            <div class="control-panel" id="inertial-navigation-system">
               <h2>Sistema de Navegação Inercial</h2>
+              
+              <div class="ins-control-panel">
+                <h3>Painel de Controle</h3>
+                
+                <div class="ins-switch">
+                  <label>Alimentação:</label>
+                  <input type="checkbox" id="ins-power-switch">
+                </div>
+                
+                <div class="ins-switch">
+                  <label>Modo de Operação:</label>
+                  <select id="ins-mode-switch">
+                    <option value="autonomous">Navegação Autônoma</option>
+                    <option value="calibration">Calibração</option>
+                    <option value="test">Teste</option>
+                  </select>
+                </div>
+                
+                <div class="ins-switch">
+                  <button id="ins-reset-switch">Reiniciar</button>
+                </div>
+                
+                <div class="ins-calibration">
+                  <button id="ins-calibrate">Calibrar</button>
+                </div>
+                
+                <div class="ins-status">
+                  <h4>Indicadores de Status:</h4>
+                  <div id="ins-status-indicators">
+                    <span class="status-indicator" id="signal-quality"></span>
+                    <span class="status-indicator" id="system-stability"></span>
+                    <span class="status-indicator" id="system-error"></span>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="control-panel">
               <h2>Sistemas de Emergência e Aborto</h2>
@@ -47,7 +82,7 @@
         <div class="bottom-controls">
           <div class="control-panel" id="flight-control-panel">
             <h2>Painel de Controle de Voo Principal</h2>
-            <!-- O conteúdo de computer.html será carregado aqui -->
+            <!-- O conteúdo de computer.js será carregado aqui -->
           </div>
           
           <div class="control-panel">
@@ -105,5 +140,6 @@
   </script>
   <script src="script.js"></script>
   <script src="computer.js"></script>
+  <script src="ine.js"></script>
 </body>
 </html>

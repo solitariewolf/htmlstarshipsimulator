@@ -95,4 +95,41 @@ document.addEventListener("DOMContentLoaded", function() {
           computerOutput.textContent = lines.join('\n');
       });
   });
+
+
+//interruptores
+    // Adicionando o painel de interruptores
+    const switchPanel = document.createElement('div');
+    switchPanel.classList.add('switch-panel');
+    const switches = [
+        'Ignição',
+        'Power',
+        'Motor 1',
+        'Motor 2',
+        'Motores Aux',
+        'Elétrica',
+        'Hidráulica',
+        'Modo Eco',
+        'Modo Turbo',
+        'Modo Decolagem',
+        'Modo Cruzeiro'
+    ];
+
+    switches.forEach(switchLabel => {
+        const switchContainer = document.createElement('div');
+        switchContainer.classList.add('switch-container');
+        const input = document.createElement('input');
+        input.type = 'checkbox';
+        const switchDiv = document.createElement('div');
+        switchDiv.classList.add('switch');
+        const label = document.createElement('div');
+        label.classList.add('switch-label');
+        label.textContent = switchLabel;
+        switchDiv.appendChild(input);
+        switchContainer.appendChild(switchDiv);
+        switchContainer.appendChild(label);
+        switchPanel.appendChild(switchContainer);
+    });
+
+    miniComputer.appendChild(switchPanel);
 });
