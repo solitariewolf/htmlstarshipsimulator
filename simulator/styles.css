@@ -1,5 +1,5 @@
 html, body {
-    overflow: hidden;
+    overflow: auto;
     background-color: #010d77;
    }
    .container {
@@ -18,7 +18,7 @@ html, body {
     position: absolute; 
     top: 20px; 
     right: 10px; 
-    width: 400px; 
+    width: 550px; 
     height: 320px; 
     background-color: #000;
     overflow: hidden;
@@ -80,6 +80,45 @@ html, body {
   .control-panel h2 {
     margin-top: 0;
   }
+/*readequação de paineis*/
+/* Estilos adicionais para posicionar os painéis de controle */
+.multifunctional-display-panel {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.inertial-navigation-panel {
+  position: absolute;
+  top: calc(10px + 20px + 400px);
+  left: 10px;
+}
+
+.emergency-systems-panel {
+  position: absolute;
+  top: 800px;
+  left: calc(10px + 50px + 400px)
+}
+
+.flight-control-panel {
+  position: absolute;
+  top: calc(0px + 0px + 10px);
+  left: calc(10px + 20px + 430px)
+}
+
+.maneuver-controls-panel {
+  position: absolute;
+  top: calc(10px);
+  left: calc(10px + 50px + 850px)
+}  
+
+.spaceship-frame {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+
   /* estilos do controle de guinada */
   .yaw-slider {
     width: 200px;
@@ -294,4 +333,42 @@ button {
     width: 370px;
     margin: 5px;
     border: solid 1px #0f0;
+}
+/* manetes de potência*/
+.engine-slider.vertical {
+  writing-mode: bt-lr; /* IE */
+  -webkit-appearance: slider-vertical; /* WebKit */
+  width: 8px;
+  height: 150px;
+  padding: 0 5px;
+}
+.lock-button.locked {
+  background-color: red;
+  color: white;
+}
+.engine-controls {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-engine-controls, .aux-engine-controls {
+  display: flex;
+  align-items: center;
+}
+
+.engine-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.throttle-control {
+  writing-mode: bt-lr; /* old syntax for IE and Edge */
+  height: 150px;
+  margin: 10px;
+}
+
+.lock-button {
+  margin-left: 10px;
 }

@@ -13,7 +13,7 @@
     <div class="container">
         <div class="top-section">
           <div class="left-controls">
-            <div class="control-panel">
+            <div class="control-panel multifunctional-display-panel">
               <h2>Display Multifuncional</h2>
 
               <div class="display">
@@ -35,7 +35,7 @@
           </div>
           
           <div class="right-controls">
-            <div class="control-panel" id="inertial-navigation-system">
+            <div class="control-panel inertial-navigation-panel" id="inertial-navigation-system">
               <h2>Sistema de Navegação Inercial</h2>
               
               <div class="ins-control-panel">
@@ -73,19 +73,19 @@
                 </div>
               </div>
             </div>
-            <div class="control-panel">
+            <div class="control-panel emergency-systems-panel">
               <h2>Sistemas de Emergência e Aborto</h2>
             </div>
           </div>
         </div>
         
         <div class="bottom-controls">
-          <div class="control-panel" id="flight-control-panel">
+          <div class="control-panel flight-control-panel" id="flight-control-panel">
             <h2>Painel de Controle de Voo Principal</h2>
             <!-- O conteúdo de computer.js será carregado aqui -->
           </div>
           
-          <div class="control-panel">
+          <div class="control-panel maneuver-controls-panel">
             <h2>Controles de Manobra</h2>
             
             <p>Rotação da Espaçonave:</p>
@@ -114,6 +114,49 @@
                 <button class="lock-button" data-control="pitch-control">L</button>
                 <span class="light green" id="pitch-control-light"></span>
             </div>
+
+            <div class="engine-controls">
+
+              <div class="main-engine-controls control-group">
+                  <p>Manetes de potência:</p>
+                  
+                  <div class="engine-control">
+                    <label>M1</label>
+                    <input type="range" id="main-engine-1-control" min="0" max="100" value="0" class="engine-slider vertical" orient="vertical" />
+                    <span id="main-engine-1-display">0%</span>
+                </div>
+                
+                <button class="lock-button" data-control="main-engines">MJ</button>
+        
+                <div class="engine-control">
+                    <label>M2:</label>
+                    <input type="range" id="main-engine-2-control" min="0" max="100" value="0" class="engine-slider vertical" orient="vertical" />
+                    <span id="main-engine-2-display">0%</span>
+                </div>
+            </div>
+            
+            <div class="aux-engine-controls control-group">
+                <p>Manetes dos Motores Auxiliares:</p>
+                
+                <div class="engine-control">
+                    <label>A1:</label>
+                    <input type="range" id="aux-engine-1-control" min="0" max="100" value="0" class="engine-slider vertical" orient="vertical" />
+                    <span id="aux-engine-1-display">0%</span>
+                </div>
+                
+                <button class="lock-button" data-control="aux-engines">MJ</button>
+        
+                <div class="engine-control">
+                    <label>A2:</label>
+                    <input type="range" id="aux-engine-2-control" min="0" max="100" value="0" class="engine-slider vertical" orient="vertical" />
+                    <span id="aux-engine-2-display">0%</span>
+                </div>
+              </div>
+          
+          </div>
+          
+            
+
             
         </div>
         </div>
@@ -141,5 +184,6 @@
   <script src="script.js"></script>
   <script src="computer.js"></script>
   <script src="ine.js"></script>
+  <script src="controls.js"></script>
 </body>
 </html>
