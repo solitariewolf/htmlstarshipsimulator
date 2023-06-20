@@ -130,110 +130,115 @@ switches.forEach(switchLabel => {
 
 miniComputer.appendChild(switchPanel);
 
-// Acionar o interruptor de ignição
-const switchButtons = switchPanel.querySelectorAll('button');
-const ignitionSwitch = switchButtons[0]; // Pegando o primeiro botão, que deve ser o de Ignição
-const electricSwitch = switchButtons[5]; //eletrica
-const hidraulicoSwitch = switchButtons[6]; //hidráulico
-const motor1Switch = switchButtons[2]; // motor 1
-const motor2Switch = switchButtons[3]; // motor 2
-console.log('Interruptor de ignição:', ignitionSwitch); // Novo log
+        // Acionar o interruptor de ignição
+        const switchButtons = switchPanel.querySelectorAll('button');
+        const ignitionSwitch = switchButtons[0]; // Pegando o primeiro botão, que deve ser o de Ignição
+        const electricSwitch = switchButtons[5]; //eletrica
+        const hidraulicoSwitch = switchButtons[6]; //hidráulico
+        const motor1Switch = switchButtons[2]; // motor 1
+        const motor2Switch = switchButtons[3]; // motor 2
+        const auxMotorsSwitch = switchButtons[4]; // Motores Aux
+        console.log('Interruptor de ignição:', ignitionSwitch); // Novo log
 
-electricSwitch.disabled = true; // O botão Elétrica começa desativado
-hidraulicoSwitch.disabled = true;
-motor1Switch.disabled = true;
-motor2Switch.disabled = true
+        electricSwitch.disabled = true; // Os botões começam desativados
+        hidraulicoSwitch.disabled = true;
+        motor1Switch.disabled = true;
+        motor2Switch.disabled = true
+        auxMotorsSwitch.disabled = true;
 
-if (ignitionSwitch) {
-    ignitionSwitch.addEventListener('click', function() {
-        console.log('Interruptor de ignição acionado');
-        this.classList.add('active');  // Adiciona a classe 'active' ao botão
-        this.disabled = true;  // Desativa o botão
 
-        // Iniciar animação de carregamento na tela do computador
-        let percentage = 0;
-        const loadingInterval = setInterval(() => {
-            // Atualizar texto na tela do computador
-            computerOutput.textContent = `Carregando sistemas... ${percentage}%`;
-            console.log(`Carregando sistemas... ${percentage}%`);
-            percentage++;
-            if (percentage > 100) {
-                clearInterval(loadingInterval);
-                console.log('Carregamento completo');
-                // Adicionar a mensagem na tela do computador após o carregamento ser concluído
-                lines.push('Sistemas de ignição carregados, ligue o sistema elétrico');
-                lines.push('');  // Adicionar uma nova linha vazia
-                computerOutput.textContent = lines.join('\n');
-                setTimeout(() => {
-                    computerOutput.scrollTop = computerOutput.scrollHeight;
-                }, 0);
-                electricSwitch.disabled = false; // Ativa o botão Elétrica após o carregamento dos sistemas de ignição
-            }
-        }, 30);
-    });
-}
+        if (ignitionSwitch) {
+            ignitionSwitch.addEventListener('click', function() {
+                console.log('Interruptor de ignição acionado');
+                this.classList.add('active');  // Adiciona a classe 'active' ao botão
+                this.disabled = true;  // Desativa o botão
 
-// Acionar o interruptor Elétrica
-if (electricSwitch) {
-    electricSwitch.addEventListener('click', function() {
-        console.log('Interruptor Elétrica acionado');
-        this.classList.add('active');  // Adicionar a classe 'active' ao botão
-        this.disabled = true;  // Desativar o botão
+                // Iniciar animação de carregamento na tela do computador
+                let percentage = 0;
+                const loadingInterval = setInterval(() => {
+                    // Atualizar texto na tela do computador
+                    computerOutput.textContent = `Carregando sistemas... ${percentage}%`;
+                    console.log(`Carregando sistemas... ${percentage}%`);
+                    percentage++;
+                    if (percentage > 100) {
+                        clearInterval(loadingInterval);
+                        console.log('Carregamento completo');
+                        // Adicionar a mensagem na tela do computador após o carregamento ser concluído
+                        lines.push('Sistemas de ignição carregados, ligue o sistema elétrico');
+                        lines.push('');  // Adicionar uma nova linha vazia
+                        computerOutput.textContent = lines.join('\n');
+                        setTimeout(() => {
+                            computerOutput.scrollTop = computerOutput.scrollHeight;
+                        }, 0);
+                        electricSwitch.disabled = false; // Ativa o botão Elétrica após o carregamento dos sistemas de ignição
+                    }
+                }, 30);
+            });
+        }
 
-        // Iniciar animação de carregamento na tela do computador
-        let percentage = 0;
-        const loadingInterval = setInterval(() => {
-            // Atualizar texto na tela do computador
-            computerOutput.textContent = `Carregando sistemas elétricos... ${percentage}%`;
-            console.log(`Carregando sistemas elétricos... ${percentage}%`);
-            percentage++;
-            if (percentage > 100) {
-                clearInterval(loadingInterval);
-                console.log('Carregamento completo');
-                // Adicionar a mensagem na tela do computador após o carregamento ser concluído
-                lines.push('Sistemas elétricos carregados, ligue o sistema hidráulico');
-                lines.push('');  // Adicionar uma nova linha vazia
-                computerOutput.textContent = lines.join('\n');
-                computerOutput.scrollTop = computerOutput.scrollHeight;
-                setTimeout(() => {
-                    computerOutput.scrollTop = computerOutput.scrollHeight;
-                }, 0);
-                hidraulicoSwitch.disabled = false; // Ativa o botão Hidráulico após o carregamento dos sistemas elétricos
-                motor1Switch.disabled = false; // Ativa o botão Motor 1 após o carregamento dos sistemas elétricos
-                motor2Switch.disabled = false; // Ativa o botão Motor 2 após o carregamento dos sistemas elétricos
-            }
-        }, 20);
-    });
-}
+        // Acionar o interruptor Elétrica
+        if (electricSwitch) {
+            electricSwitch.addEventListener('click', function() {
+                console.log('Interruptor Elétrica acionado');
+                this.classList.add('active');  // Adicionar a classe 'active' ao botão
+                this.disabled = true;  // Desativar o botão
 
-// Acionar o interruptor Hidraulico
-if (hidraulicoSwitch) {
-    hidraulicoSwitch.addEventListener('click', function() {
-        this.classList.add('active');  // Adicionar a classe 'active' ao botão
-        this.disabled = true;  // Desativar o botão
+                // Iniciar animação de carregamento na tela do computador
+                let percentage = 0;
+                const loadingInterval = setInterval(() => {
+                    // Atualizar texto na tela do computador
+                    computerOutput.textContent = `Carregando sistemas elétricos... ${percentage}%`;
+                    console.log(`Carregando sistemas elétricos... ${percentage}%`);
+                    percentage++;
+                    if (percentage > 100) {
+                        clearInterval(loadingInterval);
+                        console.log('Carregamento completo');
+                        // Adicionar a mensagem na tela do computador após o carregamento ser concluído
+                        lines.push('Sistemas elétricos carregados, ligue o sistema hidráulico');
+                        lines.push('');  // Adicionar uma nova linha vazia
+                        computerOutput.textContent = lines.join('\n');
+                        computerOutput.scrollTop = computerOutput.scrollHeight;
+                        setTimeout(() => {
+                            computerOutput.scrollTop = computerOutput.scrollHeight;
+                        }, 0);
+                        hidraulicoSwitch.disabled = false; // Ativa o botão Hidráulico após o carregamento dos sistemas elétricos
+                        motor1Switch.disabled = false; // Ativa o botão Motor 1 após o carregamento dos sistemas elétricos
+                        motor2Switch.disabled = false; // Ativa o botão Motor 2 após o carregamento dos sistemas elétricos
+                    }
+                }, 20);
+            });
+        }
 
-        // Iniciar animação de carregamento na tela do computador
-        let percentage = 0;
-        const loadingInterval = setInterval(() => {
-            // Atualizar texto na tela do computador
-            computerOutput.textContent = `Carregando sistemas hidraulicos... ${percentage}%`;
-            console.log(`Carregando sistemas hidraulicos... ${percentage}%`);
-            percentage++;
-            if (percentage > 100) {
-                clearInterval(loadingInterval);
-                console.log('Carregamento completo');
-                // Adicionar a mensagem na tela do computador após o carregamento ser concluído
-                lines.push('Sistemas hidraulicos carregados, ligue os motores');
-                lines.push('');  // Adicionar uma nova linha vazia
-                computerOutput.textContent = lines.join('\n');
-                setTimeout(() => {
-                    computerOutput.scrollTop = computerOutput.scrollHeight;
-                }, 0);
-                computerOutput.scrollTop = computerOutput.scrollHeight;
-            }
-        }, 40);
-    });
-}
+        // Acionar o interruptor Hidraulico
+        if (hidraulicoSwitch) {
+            hidraulicoSwitch.addEventListener('click', function() {
+                this.classList.add('active');  // Adicionar a classe 'active' ao botão
+                this.disabled = true;  // Desativar o botão
+
+                // Iniciar animação de carregamento na tela do computador
+                let percentage = 0;
+                const loadingInterval = setInterval(() => {
+                    // Atualizar texto na tela do computador
+                    computerOutput.textContent = `Carregando sistemas hidraulicos... ${percentage}%`;
+                    console.log(`Carregando sistemas hidraulicos... ${percentage}%`);
+                    percentage++;
+                    if (percentage > 100) {
+                        clearInterval(loadingInterval);
+                        console.log('Carregamento completo');
+                        // Adicionar a mensagem na tela do computador após o carregamento ser concluído
+                        lines.push('Sistemas hidraulicos carregados, ligue os motores');
+                        lines.push('');  // Adicionar uma nova linha vazia
+                        computerOutput.textContent = lines.join('\n');
+                        setTimeout(() => {
+                            computerOutput.scrollTop = computerOutput.scrollHeight;
+                        }, 0);
+                        auxMotorsSwitch.disabled = false; // Ativa o botão Motores Aux após o carregamento do sistema hidráulico
+                        motor1Switch.disabled = false; // Ativa o botão Motor 1 após o carregamento do sistema hidráulico
+                        motor2Switch.disabled = false; // Ativa o botão Motor 2 após o carregamento do sistema hidráulico
+                    }
+                }, 40);
+            });
+        }
 
 // Acionar o interruptor do Motor 1
 if (motor1Switch) {
