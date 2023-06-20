@@ -208,8 +208,8 @@ html, body {
 }
 
 .mini-computer-screen {
-  width: 200px;
-  height: 80px;
+  width: 400px;
+  height: 100px;
   background-color: #000000;
   color: #0f0;
   border: 1px solid #444;
@@ -218,6 +218,7 @@ html, body {
   border-width: 5px;
   border-color: #010d77;
   white-space: pre-wrap;
+  overflow: auto;
 }
 
 .keyboard,
@@ -265,30 +266,21 @@ button {
 
 .switch {
   display: block;
-  width: 20px;
+  width: 100px;
   height: 40px;
   background-color: #333;
+  color: #fff;
   cursor: pointer;
   position: relative;
-}
-
-.switch input {
-  display: none;
-}
-
-.switch::before {
-  content: '';
-  position: absolute;
-  top: 10px;
-  left: 5px;
-  width: 10px;
-  height: 20px;
-  background-color: red;
+  border: none;
   transition: 0.3s;
 }
 
-.switch input:checked + .switch::before {
-  top: 20px;
+.switch:hover {
+  background-color: #666;
+}
+
+.switch:active {
   background-color: green;
 }
 
@@ -297,6 +289,11 @@ button {
   text-align: center;
   font-size: 10px;
 }
+button.switch.active {
+  background-color: green;
+  color: white;
+}
+
 
 /* Estilos para o Sistema de Navegação Inercial */
 #inertial-navigation-system {
