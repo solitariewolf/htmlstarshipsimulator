@@ -164,6 +164,9 @@ if (ignitionSwitch) {
                 lines.push('Sistemas de ignição carregados, ligue o sistema elétrico');
                 lines.push('');  // Adicionar uma nova linha vazia
                 computerOutput.textContent = lines.join('\n');
+                setTimeout(() => {
+                    computerOutput.scrollTop = computerOutput.scrollHeight;
+                }, 0);
                 electricSwitch.disabled = false; // Ativa o botão Elétrica após o carregamento dos sistemas de ignição
             }
         }, 30);
@@ -192,6 +195,9 @@ if (electricSwitch) {
                 lines.push('');  // Adicionar uma nova linha vazia
                 computerOutput.textContent = lines.join('\n');
                 computerOutput.scrollTop = computerOutput.scrollHeight;
+                setTimeout(() => {
+                    computerOutput.scrollTop = computerOutput.scrollHeight;
+                }, 0);
                 hidraulicoSwitch.disabled = false; // Ativa o botão Hidráulico após o carregamento dos sistemas elétricos
                 motor1Switch.disabled = false; // Ativa o botão Motor 1 após o carregamento dos sistemas elétricos
                 motor2Switch.disabled = false; // Ativa o botão Motor 2 após o carregamento dos sistemas elétricos
@@ -220,6 +226,9 @@ if (hidraulicoSwitch) {
                 lines.push('Sistemas hidraulicos carregados, ligue os motores');
                 lines.push('');  // Adicionar uma nova linha vazia
                 computerOutput.textContent = lines.join('\n');
+                setTimeout(() => {
+                    computerOutput.scrollTop = computerOutput.scrollHeight;
+                }, 0);
                 computerOutput.scrollTop = computerOutput.scrollHeight;
             }
         }, 40);
@@ -235,6 +244,9 @@ if (motor1Switch) {
         lines.push('Motor 1 acionado');
         lines.push('');  // Adicionar uma nova linha vazia
         computerOutput.textContent = lines.join('\n');
+        setTimeout(() => {
+            computerOutput.scrollTop = computerOutput.scrollHeight;
+        }, 0);
         computerOutput.scrollTop = computerOutput.scrollHeight;
     });
 }
@@ -247,6 +259,9 @@ if (motor2Switch) {
         lines.push('Motor 2 acionado');
         lines.push('');  // Adicionar uma nova linha vazia
         computerOutput.textContent = lines.join('\n');
+        setTimeout(() => {
+            computerOutput.scrollTop = computerOutput.scrollHeight;
+        }, 0);
         computerOutput.scrollTop = computerOutput.scrollHeight;
     });
 }
