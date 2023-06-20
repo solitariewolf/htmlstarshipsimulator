@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 //interruptores
-    // Criação do painel de interruptores
+// Criação do painel de interruptores
 const switchPanel = document.createElement('div');
 switchPanel.classList.add('switch-panel');
 // Criação dos interruptores
@@ -171,8 +171,9 @@ miniComputer.appendChild(switchPanel);
                             computerOutput.scrollTop = computerOutput.scrollHeight;
                         }, 0);
                         electricSwitch.disabled = false; // Ativa o botão Elétrica após o carregamento dos sistemas de ignição
+                        localStorage.setItem('electricSwitch', 'on'); // Armazene o estado do interruptor no localStorage
                     }
-                }, 30);
+                }, 10);
             });
         }
 
@@ -202,10 +203,9 @@ miniComputer.appendChild(switchPanel);
                             computerOutput.scrollTop = computerOutput.scrollHeight;
                         }, 0);
                         hidraulicoSwitch.disabled = false; // Ativa o botão Hidráulico após o carregamento dos sistemas elétricos
-                        motor1Switch.disabled = false; // Ativa o botão Motor 1 após o carregamento dos sistemas elétricos
-                        motor2Switch.disabled = false; // Ativa o botão Motor 2 após o carregamento dos sistemas elétricos
+                        localStorage.setItem('electricSwitch', 'on'); // Armazene o estado do interruptor no localStorage
                     }
-                }, 20);
+                }, 10);
             });
         }
 
@@ -236,7 +236,7 @@ miniComputer.appendChild(switchPanel);
                         motor1Switch.disabled = false; // Ativa o botão Motor 1 após o carregamento do sistema hidráulico
                         motor2Switch.disabled = false; // Ativa o botão Motor 2 após o carregamento do sistema hidráulico
                     }
-                }, 40);
+                }, 10);
             });
         }
 
@@ -255,7 +255,7 @@ if (motor1Switch) {
         computerOutput.scrollTop = computerOutput.scrollHeight;
     });
 }
-
+// Acionar o interruptor do Motor 2
 if (motor2Switch) {
     motor2Switch.addEventListener('click', function() {
         console.log('Interruptor Motor 2 acionado');
@@ -270,7 +270,20 @@ if (motor2Switch) {
         computerOutput.scrollTop = computerOutput.scrollHeight;
     });
 }
-
-
+// Acionar o interruptor do Motor Aux
+if (auxMotorsSwitch) {
+    auxMotorsSwitch.addEventListener('click', function() {
+        console.log('Interruptor Motor Auxiliar acionado');
+        this.classList.add('active');  // Adicionar a classe 'active' ao botão
+        this.disabled = true;  // Desativar o botão
+        lines.push('Motor Auxiliar acionado');
+        lines.push('');  // Adicionar uma nova linha vazia
+        computerOutput.textContent = lines.join('\n');
+        setTimeout(() => {
+            computerOutput.scrollTop = computerOutput.scrollHeight;
+        }, 0);
+        computerOutput.scrollTop = computerOutput.scrollHeight;
+    });
+}
 
 });
