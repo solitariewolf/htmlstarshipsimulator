@@ -230,6 +230,10 @@ miniComputer.appendChild(switchPanel);
                         mainEngine2Control.disabled = false;
                         auxEngine1Control.disabled = false;
                         auxEngine2Control.disabled = false;
+                        motor1Switch.disabled = false; // Ativa o botão Motor 1 após o carregamento dos sistemas elétricos
+                        //motor2Switch.disabled = false; // Ativa o botão Motor 2 após o carregamento dos sistemas elétricos
+                        auxMotorsSwitch.disabled = false;
+                        
                     }
                 }, 10);
             });
@@ -244,12 +248,11 @@ if (motor1Switch) {
         lines.push('Motor 1 acionado');
         lines.push('');  // Adicionar uma nova linha vazia
         computerOutput.textContent = lines.join('\n');
-        setTimeout(() => {
-            computerOutput.scrollTop = computerOutput.scrollHeight;
-        }, 0);
         computerOutput.scrollTop = computerOutput.scrollHeight;
+        motor2Switch.disabled = false; // Ativa o botão Motor 2 após o carregamento
     });
 }
+
 // Acionar o interruptor do Motor 2
 if (motor2Switch) {
     motor2Switch.addEventListener('click', function() {
@@ -259,16 +262,12 @@ if (motor2Switch) {
         lines.push('Motor 2 acionado');
         lines.push('');  // Adicionar uma nova linha vazia
         computerOutput.textContent = lines.join('\n');
-        setTimeout(() => {
-            computerOutput.scrollTop = computerOutput.scrollHeight;
-        }, 0);
         computerOutput.scrollTop = computerOutput.scrollHeight;
     });
 }
 // Acionar o interruptor do Motor Aux
 if (auxMotorsSwitch) {
     auxMotorsSwitch.addEventListener('click', function() {
-        console.log('Interruptor Motor Auxiliar acionado');
         this.classList.add('active');  // Adicionar a classe 'active' ao botão
         this.disabled = true;  // Desativar o botão
         lines.push('Motor Auxiliar acionado');
@@ -308,8 +307,8 @@ document.addEventListener("DOMContentLoaded", function() {
     mainEngine2Control.disabled = true;
     auxEngine1Control.disabled = true;
     auxEngine2Control.disabled = true;
-    lockMainEnginesButton.disabled = true;
-    lockAuxEnginesButton.disabled = true;
+    lockMainEnginesButton.disabled = false;
+    lockAuxEnginesButton.disabled = false;
     joystickControl.disabled = true;
     yawControl.disabled = true;
     pitchControl.disabled = true;
