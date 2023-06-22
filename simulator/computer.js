@@ -15,6 +15,11 @@ document.addEventListener("DOMContentLoaded", function() {
     
     const numericKeyboard = document.createElement('div');
     numericKeyboard.classList.add('numeric-keyboard');
+
+    const mainEngine1Control = document.getElementById("main-engine-1-control");  
+    const mainEngine2Control = document.getElementById("main-engine-2-control");  
+    const auxEngine1Control = document.getElementById("aux-engine-1-control");  
+    const auxEngine2Control = document.getElementById("aux-engine-2-control");
     
     miniComputerScreen.appendChild(computerOutput);
     miniComputer.appendChild(miniComputerScreen);
