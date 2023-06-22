@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function() {
     miniComputer.appendChild(miniComputerScreen);
     miniComputer.appendChild(keyboard);
     miniComputer.appendChild(numericKeyboard);
-
     // Criação das teclas
     const keys = [
         ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
@@ -28,9 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
         ['Z', 'X', 'C', 'V', 'B', 'N', 'M'],
         ['Espaço', 'Enter', 'Backspace']
     ];
-
     const numericKeys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
-
     keys.forEach(row => {
         const keyboardRow = document.createElement('div');
         keyboardRow.classList.add('keyboard-row');
@@ -48,24 +45,20 @@ document.addEventListener("DOMContentLoaded", function() {
         });
         keyboard.appendChild(keyboardRow);
     });
-
     numericKeys.forEach(key => {
         const button = document.createElement('button');
         button.textContent = key;
         numericKeyboard.appendChild(button);
     });
-
     // Adicionando o mini-computador ao painel de controle de voo
     const flightControlPanel = document.getElementById('flight-control-panel');
     if (flightControlPanel) {
         flightControlPanel.appendChild(miniComputer);
     }
-
   // Limitar número de caracteres e linhas
   let lines = [''];
   const maxCharsPerLine = 20;
   const maxLines = 10000;
-
   // Função para capturar cliques nos botões e exibir no mini-computador
   const buttons = miniComputer.querySelectorAll('button');
   buttons.forEach(button => {
@@ -91,13 +84,9 @@ document.addEventListener("DOMContentLoaded", function() {
                   lines.push(character);
               }
           }
-
           computerOutput.textContent = lines.join('\n');
       });
   });
-
-
-//interruptores
 // Criação do painel de interruptores
 const switchPanel = document.createElement('div');
 switchPanel.classList.add('switch-panel');
@@ -115,7 +104,6 @@ const switches = [
     'Modo Decolagem',
     'Modo Cruzeiro'
 ];
-
 switches.forEach(switchLabel => {
     const switchContainer = document.createElement('div');
     switchContainer.classList.add('switch-container');
@@ -127,9 +115,7 @@ switches.forEach(switchLabel => {
     switchContainer.appendChild(button);
     switchPanel.appendChild(switchContainer);
 });
-
 miniComputer.appendChild(switchPanel);
-
         // Acionar o interruptor de ignição
         const switchButtons = switchPanel.querySelectorAll('button');
         const ignitionSwitch = switchButtons[0]; // Pegando o primeiro botão, que deve ser o de Ignição
@@ -146,13 +132,11 @@ miniComputer.appendChild(switchPanel);
         motor2Switch.disabled = true
         auxMotorsSwitch.disabled = true;
 
-
         if (ignitionSwitch) {
             ignitionSwitch.addEventListener('click', function() {
                 console.log('Interruptor de ignição acionado');
                 this.classList.add('active');  // Adiciona a classe 'active' ao botão
                 this.disabled = true;  // Desativa o botão
-
                 // Iniciar animação de carregamento na tela do computador
                 let percentage = 0;
                 const loadingInterval = setInterval(() => {
@@ -176,7 +160,6 @@ miniComputer.appendChild(switchPanel);
                 }, 10);
             });
         }
-
         // Acionar o interruptor Elétrica
         if (electricSwitch) {
             electricSwitch.addEventListener('click', function() {
@@ -208,13 +191,16 @@ miniComputer.appendChild(switchPanel);
                 }, 10);
             });
         }
-
         // Acionar o interruptor Hidraulico
         if (hidraulicoSwitch) {
             hidraulicoSwitch.addEventListener('click', function() {
-                this.classList.add('active');  // Adicionar a classe 'active' ao botão
-                this.disabled = true;  // Desativar o botão
-
+                this.classList.add('active'); // Adicionar a classe 'active' ao botão
+                this.disabled = true; // Desativar o botão
+        
+                const joystickControl = document.getElementById("joystick");
+                const yawControl = document.getElementById("yaw-control");
+                const pitchControl = document.getElementById("pitch-control");
+        
                 // Iniciar animação de carregamento na tela do computador
                 let percentage = 0;
                 const loadingInterval = setInterval(() => {
@@ -227,14 +213,18 @@ miniComputer.appendChild(switchPanel);
                         console.log('Carregamento completo');
                         // Adicionar a mensagem na tela do computador após o carregamento ser concluído
                         lines.push('Sistemas hidraulicos carregados, ligue os motores');
-                        lines.push('');  // Adicionar uma nova linha vazia
+                        lines.push(''); // Adicionar uma nova linha vazia
                         computerOutput.textContent = lines.join('\n');
                         setTimeout(() => {
                             computerOutput.scrollTop = computerOutput.scrollHeight;
                         }, 0);
-                        auxMotorsSwitch.disabled = false; // Ativa o botão Motores Aux após o carregamento do sistema hidráulico
-                        motor1Switch.disabled = false; // Ativa o botão Motor 1 após o carregamento do sistema hidráulico
-                        motor2Switch.disabled = false; // Ativa o botão Motor 2 após o carregamento do sistema hidráulico
+                        joystickControl.disabled = false;
+                        yawControl.disabled = false;
+                        pitchControl.disabled = false;
+                        mainEngine1Control.disabled = false;
+                        mainEngine2Control.disabled = false;
+                        auxEngine1Control.disabled = false;
+                        auxEngine2Control.disabled = false;
                     }
                 }, 10);
             });
@@ -285,5 +275,74 @@ if (auxMotorsSwitch) {
         computerOutput.scrollTop = computerOutput.scrollHeight;
     });
 }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    const mainEngine1Control = document.getElementById("main-engine-1-control");
+    const mainEngine1Display = document.getElementById("main-engine-1-display");
+
+    const mainEngine2Control = document.getElementById("main-engine-2-control");
+    const mainEngine2Display = document.getElementById("main-engine-2-display");
+
+    const auxEngine1Control = document.getElementById("aux-engine-1-control");
+    const auxEngine1Display = document.getElementById("aux-engine-1-display");
+
+    const auxEngine2Control = document.getElementById("aux-engine-2-control");
+    const auxEngine2Display = document.getElementById("aux-engine-2-display");
+
+    const lockMainEnginesButton = document.querySelector('[data-control="main-engines"]');
+    const lockAuxEnginesButton = document.querySelector('[data-control="aux-engines"]');
+
+    const joystickControl = document.getElementById("joystick");
+    const yawControl = document.getElementById("yaw-control");
+    const pitchControl = document.getElementById("pitch-control");
+
+    // Desabilitar todos os controles no início
+    mainEngine1Control.disabled = true;
+    mainEngine2Control.disabled = true;
+    auxEngine1Control.disabled = true;
+    auxEngine2Control.disabled = true;
+    lockMainEnginesButton.disabled = true;
+    lockAuxEnginesButton.disabled = true;
+    joystickControl.disabled = true;
+    yawControl.disabled = true;
+    pitchControl.disabled = true;
+
+    function updateDisplay(control, display) {
+        display.textContent = `${control.value}%`;
+    }
+
+    mainEngine1Control.addEventListener("input", function() {
+        updateDisplay(mainEngine1Control, mainEngine1Display);
+        if (lockMainEnginesButton.classList.contains('locked')) {
+            mainEngine2Control.value = mainEngine1Control.value;
+            updateDisplay(mainEngine2Control, mainEngine2Display);
+        }
+    });
+
+    mainEngine2Control.addEventListener("input", function() {
+        updateDisplay(mainEngine2Control, mainEngine2Display);
+    });
+
+    auxEngine1Control.addEventListener("input", function() {
+        updateDisplay(auxEngine1Control, auxEngine1Display);
+        if (lockAuxEnginesButton.classList.contains('locked')) {
+            auxEngine2Control.value = auxEngine1Control.value;
+            updateDisplay(auxEngine2Control, auxEngine2Display);
+        }
+    });
+
+    auxEngine2Control.addEventListener("input", function() {
+        updateDisplay(auxEngine2Control, auxEngine2Display);
+    });
+
+    lockMainEnginesButton.addEventListener("click", function() {
+        lockMainEnginesButton.classList.toggle('locked');
+    });
+
+    lockAuxEnginesButton.addEventListener("click", function() {
+        lockAuxEnginesButton.classList.toggle('locked');
+    });
 
 });

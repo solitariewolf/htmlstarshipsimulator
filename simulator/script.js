@@ -115,4 +115,3 @@ document.addEventListener('DOMContentLoaded', function() {
         element.dispatchEvent(event);
     }
 });
-
