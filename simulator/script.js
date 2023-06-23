@@ -22,37 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
 
-    function toggleLock(event) {
-        const control = document.getElementById(event.target.dataset.control);
-        const light = document.getElementById(event.target.dataset.control + '-light');
-
-        if (control.disabled) {
-            control.disabled = false;
-            light.classList.remove('red');
-            light.classList.add('green');
-            event.target.textContent = "L";
-
-            // Se o interruptor elétrico foi ligado, habilitar os controles de rotação, guinada e inclinação
-            if (event.target.id === 'electric-switch') {
-                joystick.disabled = false;
-                yawControl.disabled = false;
-                pitchControl.disabled = false;
-            }
-        } else {
-            control.disabled = true;
-            light.classList.remove('green');
-            light.classList.add('red');
-            event.target.textContent = "L";
-
-            // Se o interruptor elétrico foi desligado, desabilitar os controles de rotação, guinada e inclinação
-            if (event.target.id === 'electric-switch') {
-                joystick.disabled = true;
-                yawControl.disabled = true;
-                pitchControl.disabled = true;
-            }
-        }
-    }
-
 
     function updateRotation(event) {
         rotationDegrees = event.target.value - 180;

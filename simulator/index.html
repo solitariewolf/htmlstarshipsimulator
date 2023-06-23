@@ -160,11 +160,14 @@
             <div class="engine-controls">
 
               <div class="main-engine-controls control-group">
-                  <p>Manetes de potência:</p>
+                  <p>MMain</p>
                   
                   <div class="engine-control">
                     <label>M1</label>
                     <input type="range" id="main-engine-1-control" min="0" max="100" value="0" class="engine-slider vertical" orient="vertical" />
+                    <div class="power-container">
+                      <div id="main-engine-1-power-bar" class="engine-power-bar"></div>
+                    </div>
                     <span id="main-engine-1-display">0%</span>
                 </div>
                 
@@ -178,7 +181,7 @@
             </div>
             
             <div class="aux-engine-controls control-group">
-                <p>Manetes dos Motores Auxiliares:</p>
+                <p>MAux</p>
                 
                 <div class="engine-control">
                     <label>A1:</label>
@@ -193,20 +196,14 @@
                     <input type="range" id="aux-engine-2-control" min="0" max="100" value="0" class="engine-slider vertical" orient="vertical" />
                     <span id="aux-engine-2-display">0%</span>
                 </div>
-              </div>
-          
-          </div>
-           
-            
-
-            
+              </div>       
+          </div>  
         </div>
         </div>
       </div>
   <script>
     function createStars(numStars) {
       const frame = document.getElementById('spaceship-frame');
-      
       for (let i = 0; i < numStars; i++) {
         const star = document.createElement('div');
         star.classList.add('star');
@@ -214,13 +211,11 @@
         star.style.left = `${Math.random() * 100}%`;
         star.style.animationDelay = `${Math.random() * 2}s`;
         frame.appendChild(star);
-
         setTimeout(() => {
           star.classList.add('animated');
         }, Math.random() * 2000);
       }
     }
-
     createStars(50);
   </script>
   <script>
