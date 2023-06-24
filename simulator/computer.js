@@ -31,36 +31,34 @@ document.addEventListener("DOMContentLoaded", function() {
     auxEngine1Control.addEventListener('input', updateSpeed);
     auxEngine2Control.addEventListener('input', updateSpeed);
     
-    let acceleration = 0;
+    let targetSpeed = 0;
 
     function updateSpeed() {
-        let mainEnginePower = (mainEngine1Control.value + mainEngine2Control.value) / 2;
-        let auxEnginePower = (auxEngine1Control.value + auxEngine2Control.value) / 2;
-        
-        // Ajuste a velocidade máxima com base nos motores auxiliares
-        let maxSpeed = auxMotorsSwitch.classList.contains('active') ? 735 : 520;
-        let targetSpeed = maxSpeed * (mainEnginePower + auxEnginePower) / 200.0;
-    
-        // Calcule a aceleração com base na diferença entre a velocidade atual e a velocidade alvo
-        let speedDifference = targetSpeed - currentSpeed;
-        acceleration = speedDifference * 0.05;
-    
-        // Atualize a velocidade atual com base na aceleração
-        currentSpeed += acceleration;
-    
-        // Garanta que a velocidade não ultrapasse a velocidade máxima
-        if (currentSpeed > maxSpeed) {
-            currentSpeed = maxSpeed;
+        // Obtemos o valor das manetes, que varia de 0 a 100
+        let mainEngine1Power = mainEngine1Control.value;  
+        let mainEngine2Power = mainEngine2Control.value;  
+        let auxEngine1Power = auxEngine1Control.value;  
+        let auxEngine2Power = auxEngine2Control.value;  
+      
+        // Mapeamos o valor das manetes para o intervalo de velocidades desejado
+        let mainEngine1Speed = mainEngine1Power / 100.0 * 300; // varia de 0 a 300
+        let mainEngine2Speed = mainEngine2Power / 100.0 * 300; // varia de 0 a 300
+        let auxEngine1Speed = auxEngine1Power / 100.0 * 70; // varia de 0 a 70
+        let auxEngine2Speed = auxEngine2Power / 100.0 * 70; // varia de 0 a 70
+      
+        // Somamos todas as velocidades para obter a velocidade total
+        let totalSpeed = mainEngine1Speed + mainEngine2Speed + auxEngine1Speed + auxEngine2Speed;
+      
+        // Garanta que a velocidade não ultrapasse a velocidade máxima de 735km/h
+        if (totalSpeed > 740) {
+          totalSpeed = 740;
         }
-        
-        // Garanta que a velocidade não caia abaixo de zero
-        if (currentSpeed < 0) {
-            currentSpeed = 0;
-        }
-        
-        // Atualize a exibição da velocidade aqui
+      
+        // Atualizamos a velocidade atual
+        currentSpeed = totalSpeed;
+      
         speedDisplay.textContent = `${Math.round(currentSpeed)} km/h`;
-    }
+      }
     // fim da função para lidar com a velocidade
     miniComputerScreen.appendChild(computerOutput);
     miniComputer.appendChild(miniComputerScreen);
