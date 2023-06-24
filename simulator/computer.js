@@ -129,7 +129,6 @@ miniComputer.appendChild(switchPanel);
         const motor1Switch = switchButtons[2]; // motor 1
         const motor2Switch = switchButtons[3]; // motor 2
         const auxMotorsSwitch = switchButtons[4]; // Motores Aux
-        console.log('Interruptor de ignição:', ignitionSwitch); // Novo log
 
         electricSwitch.disabled = true; // Os botões começam desativados
         hidraulicoSwitch.disabled = true;
@@ -139,7 +138,6 @@ miniComputer.appendChild(switchPanel);
 
         if (ignitionSwitch) {
             ignitionSwitch.addEventListener('click', function() {
-                console.log('Interruptor de ignição acionado');
                 this.classList.add('active');  // Adiciona a classe 'active' ao botão
                 this.disabled = true;  // Desativa o botão
                 // Iniciar animação de carregamento na tela do computador
@@ -147,11 +145,9 @@ miniComputer.appendChild(switchPanel);
                 const loadingInterval = setInterval(() => {
                     // Atualizar texto na tela do computador
                     computerOutput.textContent = `Carregando sistemas... ${percentage}%`;
-                    console.log(`Carregando sistemas... ${percentage}%`);
                     percentage++;
                     if (percentage > 100) {
                         clearInterval(loadingInterval);
-                        console.log('Carregamento completo');
                         // Adicionar a mensagem na tela do computador após o carregamento ser concluído
                         lines.push('Sistemas de ignição carregados, ligue o sistema elétrico');
                         lines.push('');  // Adicionar uma nova linha vazia
@@ -168,7 +164,6 @@ miniComputer.appendChild(switchPanel);
         // Acionar o interruptor Elétrica
         if (electricSwitch) {
             electricSwitch.addEventListener('click', function() {
-                console.log('Interruptor Elétrica acionado');
                 this.classList.add('active');  // Adicionar a classe 'active' ao botão
                 this.disabled = true;  // Desativar o botão
 
@@ -177,11 +172,9 @@ miniComputer.appendChild(switchPanel);
                 const loadingInterval = setInterval(() => {
                     // Atualizar texto na tela do computador
                     computerOutput.textContent = `Carregando sistemas elétricos... ${percentage}%`;
-                    console.log(`Carregando sistemas elétricos... ${percentage}%`);
                     percentage++;
                     if (percentage > 100) {
                         clearInterval(loadingInterval);
-                        console.log('Carregamento completo');
                         // Adicionar a mensagem na tela do computador após o carregamento ser concluído
                         lines.push('Sistemas elétricos carregados, ligue o sistema hidráulico');
                         lines.push('');  // Adicionar uma nova linha vazia
@@ -211,11 +204,9 @@ miniComputer.appendChild(switchPanel);
                 const loadingInterval = setInterval(() => {
                     // Atualizar texto na tela do computador
                     computerOutput.textContent = `Carregando sistemas hidraulicos... ${percentage}%`;
-                    console.log(`Carregando sistemas hidraulicos... ${percentage}%`);
                     percentage++;
                     if (percentage > 100) {
                         clearInterval(loadingInterval);
-                        console.log('Carregamento completo');
                         // Adicionar a mensagem na tela do computador após o carregamento ser concluído
                         lines.push('Sistemas hidraulicos carregados, ligue os motores');
                         lines.push(''); // Adicionar uma nova linha vazia
@@ -226,12 +217,7 @@ miniComputer.appendChild(switchPanel);
                         joystickControl.disabled = false;
                         yawControl.disabled = false;
                         pitchControl.disabled = false;
-                        mainEngine1Control.disabled = false;
-                        mainEngine2Control.disabled = false;
-                        auxEngine1Control.disabled = false;
-                        auxEngine2Control.disabled = false;
                         motor1Switch.disabled = false; // Ativa o botão Motor 1 após o carregamento dos sistemas elétricos
-                        //motor2Switch.disabled = false; // Ativa o botão Motor 2 após o carregamento dos sistemas elétricos
                         auxMotorsSwitch.disabled = false;
                         
                     }
@@ -242,13 +228,13 @@ miniComputer.appendChild(switchPanel);
 // Acionar o interruptor do Motor 1
 if (motor1Switch) {
     motor1Switch.addEventListener('click', function() {
-        console.log('Interruptor Motor 1 acionado');
         this.classList.add('active');  // Adicionar a classe 'active' ao botão
         this.disabled = true;  // Desativar o botão
         lines.push('Motor 1 acionado');
         lines.push('');  // Adicionar uma nova linha vazia
         computerOutput.textContent = lines.join('\n');
         computerOutput.scrollTop = computerOutput.scrollHeight;
+        mainEngine1Control.disabled = false;
         motor2Switch.disabled = false; // Ativa o botão Motor 2 após o carregamento
     });
 }
@@ -256,12 +242,12 @@ if (motor1Switch) {
 // Acionar o interruptor do Motor 2
 if (motor2Switch) {
     motor2Switch.addEventListener('click', function() {
-        console.log('Interruptor Motor 2 acionado');
         this.classList.add('active');  // Adicionar a classe 'active' ao botão
         this.disabled = true;  // Desativar o botão
         lines.push('Motor 2 acionado');
         lines.push('');  // Adicionar uma nova linha vazia
         computerOutput.textContent = lines.join('\n');
+        mainEngine2Control.disabled = false;
         computerOutput.scrollTop = computerOutput.scrollHeight;
     });
 }
@@ -277,6 +263,8 @@ if (auxMotorsSwitch) {
             computerOutput.scrollTop = computerOutput.scrollHeight;
         }, 0);
         computerOutput.scrollTop = computerOutput.scrollHeight;
+        auxEngine1Control.disabled = false;
+        auxEngine2Control.disabled = false;
     });
 }
 });
