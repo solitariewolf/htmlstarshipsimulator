@@ -20,7 +20,48 @@ document.addEventListener("DOMContentLoaded", function() {
     const mainEngine2Control = document.getElementById("main-engine-2-control");  
     const auxEngine1Control = document.getElementById("aux-engine-1-control");  
     const auxEngine2Control = document.getElementById("aux-engine-2-control");
+    //função para lidar com a velocidade
+    const speedDisplay = document.getElementById('speed-display');
+    let fill = document.querySelector('.gauge__fill');
     
+    let currentSpeed = 0;
+    
+    mainEngine1Control.addEventListener('input', updateSpeed);
+    mainEngine2Control.addEventListener('input', updateSpeed);
+    auxEngine1Control.addEventListener('input', updateSpeed);
+    auxEngine2Control.addEventListener('input', updateSpeed);
+    
+    let acceleration = 0;
+
+    function updateSpeed() {
+        let mainEnginePower = (mainEngine1Control.value + mainEngine2Control.value) / 2;
+        let auxEnginePower = (auxEngine1Control.value + auxEngine2Control.value) / 2;
+        
+        // Ajuste a velocidade máxima com base nos motores auxiliares
+        let maxSpeed = auxMotorsSwitch.classList.contains('active') ? 735 : 520;
+        let targetSpeed = maxSpeed * (mainEnginePower + auxEnginePower) / 200.0;
+    
+        // Calcule a aceleração com base na diferença entre a velocidade atual e a velocidade alvo
+        let speedDifference = targetSpeed - currentSpeed;
+        acceleration = speedDifference * 0.05;
+    
+        // Atualize a velocidade atual com base na aceleração
+        currentSpeed += acceleration;
+    
+        // Garanta que a velocidade não ultrapasse a velocidade máxima
+        if (currentSpeed > maxSpeed) {
+            currentSpeed = maxSpeed;
+        }
+        
+        // Garanta que a velocidade não caia abaixo de zero
+        if (currentSpeed < 0) {
+            currentSpeed = 0;
+        }
+        
+        // Atualize a exibição da velocidade aqui
+        speedDisplay.textContent = `${Math.round(currentSpeed)} km/h`;
+    }
+    // fim da função para lidar com a velocidade
     miniComputerScreen.appendChild(computerOutput);
     miniComputer.appendChild(miniComputerScreen);
     miniComputer.appendChild(keyboard);

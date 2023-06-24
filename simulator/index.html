@@ -28,6 +28,18 @@
               <div class="display">
                   <p>Inclinação: <span id="pitch-display">180</span>°</p>
               </div>
+              <div class="speed-display">
+                <div class="speedometer">
+                  <svg viewbox="0 0 100 50" class="gauge">
+                      <circle class="gauge__track" cx="50" cy="50" r="45"></circle>
+                      <circle class="gauge__fill" cx="50" cy="50" r="45"></circle>
+                      <circle class="gauge__cover" cx="50" cy="50" r="40"></circle>
+                  </svg>
+                  <div class="gauge__center">
+                      <span id="speed-display">0 km/h</span>
+                  </div>
+              </div>
+            </div>
               <div class="artificial-horizon-container">
                   <div class="artificial-horizon" id="artificial-horizon">
                       <div class="sky"></div>
