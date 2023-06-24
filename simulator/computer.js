@@ -25,13 +25,13 @@ document.addEventListener("DOMContentLoaded", function() {
     let fill = document.querySelector('.gauge__fill');
     
     let currentSpeed = 0;
+    let targetSpeed = 0;  // Velocidade alvo, para a qual estamos nos movendo gradualmente
+    let lerpFactor = 0.01;  // Fator de interpolação, controla a rapidez com que nos movemos para a velocidade alvo
     
     mainEngine1Control.addEventListener('input', updateSpeed);
     mainEngine2Control.addEventListener('input', updateSpeed);
     auxEngine1Control.addEventListener('input', updateSpeed);
     auxEngine2Control.addEventListener('input', updateSpeed);
-    
-    let targetSpeed = 0;
 
     function updateSpeed() {
         // Obtemos o valor das manetes, que varia de 0 a 100
@@ -47,18 +47,27 @@ document.addEventListener("DOMContentLoaded", function() {
         let auxEngine2Speed = auxEngine2Power / 100.0 * 70; // varia de 0 a 70
       
         // Somamos todas as velocidades para obter a velocidade total
-        let totalSpeed = mainEngine1Speed + mainEngine2Speed + auxEngine1Speed + auxEngine2Speed;
-      
+        targetSpeed = mainEngine1Speed + mainEngine2Speed + auxEngine1Speed + auxEngine2Speed;
+
         // Garanta que a velocidade não ultrapasse a velocidade máxima de 735km/h
-        if (totalSpeed > 740) {
-          totalSpeed = 740;
+        if (targetSpeed > 740) {
+            targetSpeed = 740;
         }
-      
-        // Atualizamos a velocidade atual
-        currentSpeed = totalSpeed;
-      
+        }
+
+        function lerpSpeed() {
+        // Move a velocidade atual em direção à velocidade alvo
+        currentSpeed += (targetSpeed - currentSpeed) * lerpFactor;
+
+        // Atualiza a exibição de velocidade
         speedDisplay.textContent = `${Math.round(currentSpeed)} km/h`;
-      }
+
+        // Agenda a próxima atualização
+        requestAnimationFrame(lerpSpeed);
+        }
+
+        // Inicia a atualização de velocidade
+        lerpSpeed();
     // fim da função para lidar com a velocidade
     miniComputerScreen.appendChild(computerOutput);
     miniComputer.appendChild(miniComputerScreen);

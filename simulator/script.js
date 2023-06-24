@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateTransform();
     }
 
+
     function updateYaw(event) {
         yawDegrees = event.target.value - 180;
         yawDisplay.textContent = event.target.value;
