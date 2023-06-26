@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let rotationDegrees = 0;
     let yawDegrees = 0;
     let pitchDegrees = 0;
+    let speed = 0;
 
     const rotationDisplay = document.getElementById('rotation-display');
     const yawDisplay = document.getElementById('yaw-display');
@@ -20,7 +21,18 @@ document.addEventListener('DOMContentLoaded', function() {
     lockButtons.forEach(button => {
         button.addEventListener('click', toggleLock);
     });
+
+    function toggleLock(event) {
+        event.target.classList.toggle('locked');
+    }
     
+    const speedControl = document.getElementById('speed-control');
+    speedControl.addEventListener('input', updateSpeed);
+
+    function updateSpeed(event) {
+    speed = event.target.value;
+    updateStars();
+    }
 
 
     function updateRotation(event) {
@@ -85,3 +97,12 @@ document.addEventListener('DOMContentLoaded', function() {
         element.dispatchEvent(event);
     }
 });
+
+function updateStars() {
+    const stars = document.querySelectorAll('.star');
+    stars.forEach(star => {
+      const currentLeft = parseFloat(star.style.left);
+      const newLeft = (currentLeft - speed * 0.01) % 100;  // Isso vai mover as estrelas para a esquerda, de acordo com a velocidade.
+      star.style.left = `${newLeft}%`;
+    });
+  }
